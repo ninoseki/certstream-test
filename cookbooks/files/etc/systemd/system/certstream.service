@@ -1,0 +1,15 @@
+[Unit]
+Description=CertStream
+After=network.target
+
+[Service]
+Type=simple
+User=certstream
+WorkingDirectory=/opt/certstream
+
+Restart=always
+Environment=MIX_ENV=prod "PORT=4000"
+ExecStart=/usr/bin/mix run --no-halt
+
+[Install]
+WantedBy=multi-user.target
